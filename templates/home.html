@@ -1,0 +1,159 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Project</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" 
+    integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+     <!-- JS, Popper.js, and jQuery -->
+     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" 
+     integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" 
+ 
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" 
+    integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <style>
+      *{
+        box-sizing: border-box;
+      }
+    body{
+      background-color:antiquewhite;
+    }
+      .alert{
+        background-color: black;
+      }
+      .cardback{
+        background-color:honeydew;
+        border: 1px solid black;
+      }
+   
+    </style>
+
+</head>
+
+  <body>
+    <div class="alert" style="text-align: center;font-weight: bold;font-size:25px;color:aqua" role="alert">
+      <svg class="bi bi-cart-check" width="2em" height="1.5em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" d="M11.354 5.646a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L8 8.293l2.646-2.647a.5.5 0 0 1 .708 0z"/>
+        <path fill-rule="evenodd" d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm7 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/>
+      </svg> People Bazaar
+    </div>
+    <div class="row" style="height:300px;">
+      <div class="col-lg-6 col-md-6" style="margin-bottom: 5px;">
+        <div class="card cardback" style="width:90%;margin-left: 5%;margin-right: 5%;height:100%">
+          <div class="card-body" style="height: max-content;">
+            <h5 style="text-align: center;font-weight: bold;color:crimson" >Choose Your Product</h5>
+            <br>
+            <p style="font-size:15px;font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">
+              Select the category of the product and enter name of the product.
+              Once you click on the view items button , the products which are available on flipkart , snapdeal , paytm mall will be displayed 
+              below. This list is same as the search results of the product in the respective sites.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col=lg-6 col-md-6">
+        <div class="card cardback" style="width:90%;margin-left: 5%;margin-right: 5%;height:100%">
+          <div class="card-body">
+            <p style="font-size:large;font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">
+              Categories : <ol>
+                <li> For mobile phones</li>
+                <li> For other Products</li>
+              </ul>
+            </p>
+            <div style="font-size:large;font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">
+            <form method="POST">
+              Enter category Number : <input type="text" name="ctnumber" placeholder="Enter category number">
+              <br>
+              Enter product Name : <input type="text" name="pname" placeholder="Enter the name">
+              <br>
+              <input type="submit" value="View Items" class="btn btn-primary">
+            </form>
+            </div>
+
+          
+           
+        
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div>
+        <h1>Flipkart price list</h1>
+        <link rel="stylesheet" href="/static/styles/list.css">
+        <table>
+            <tr>
+                {% for col in column_names %}
+                <th>{{col}}</th>
+                {% endfor %}
+            </tr>
+            {% for row in row_data_1 %}
+            <tr>
+                {% for col, row_ in zip(column_names, row) %}
+                {% if col == link_column %}
+                <td>
+                        {{ row_ }}
+                </td>
+                {% else %}
+                <td>{{row_}}</td>
+                {% endif %}
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </table>
+      </div>
+      <div>
+        <h1>Paytm price list</h1>
+        <link rel="stylesheet" href="/static/styles/list.css">
+        <table>
+            <tr>
+                {% for col in column_names %}
+                <th>{{col}}</th>
+                {% endfor %}
+            </tr>
+            {% for row in row_data_2 %}
+            <tr>
+                {% for col, row_ in zip(column_names, row) %}
+                {% if col == link_column %}
+                <td>
+                        {{ row_ }}
+                </td>
+                {% else %}
+                <td>{{row_}}</td>
+                {% endif %}
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </table>
+      </div>
+      <div>
+        <h1>Snapdeal price list</h1>
+        <link rel="stylesheet" href="/static/styles/list.css">
+        <table>
+            <tr>
+                {% for col in column_names %}
+                <th>{{col}}</th>
+                {% endfor %}
+            </tr>
+            {% for row in row_data_3 %}
+            <tr>
+                {% for col, row_ in zip(column_names, row) %}
+                {% if col == link_column %}
+                <td>
+                        {{ row_ }}
+                </td>
+                {% else %}
+                <td>{{row_}}</td>
+                {% endif %}
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </table>
+      </div>
+</body>
+</html>
